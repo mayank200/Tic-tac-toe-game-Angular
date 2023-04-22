@@ -1,0 +1,12 @@
+
+
+<div class="board">
+    <button *ngFor="let square of board; let i = index"
+      [ngClass]="{ 'square-x': square === 'X', 'square-o': square === 'O', 'square-win': isWinningSquare(i) }"
+      (click)="makeMove(i)" [disabled]="gameOver">{{ square }}</button>
+  </div>
+  <div *ngIf="gameOver" class="game-over">
+    <h2 *ngIf="!winner">Game Over - It's a Tie!</h2>
+    <h2 *ngIf="winner">Congratulations {{ winner }} - You Win!</h2>
+    <button (click)="reset()">Play Again</button>
+  </div>
